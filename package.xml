@@ -39,6 +39,13 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>std_msgs</buildtool_depend>
+  <buildtool_depend>sensor_msgs</buildtool_depend>
+  <buildtool_depend>image_transport</buildtool_depend>
+  <buildtool_depend>image_geometry</buildtool_depend>
+  <buildtool_depend>cv_bridge</buildtool_depend>
+  <buildtool_depend>message_filters</buildtool_depend>
+  <buildtool_depend>depth_image_proc</buildtool_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>pcl_ros</build_depend>
   <build_depend>roscpp</build_depend>
@@ -46,6 +53,14 @@
   <build_depend>visualization_msgs</build_depend>
   <build_depend>nav_msgs</build_depend>
 
+
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>image_transport</run_depend>
+  <run_depend>image_geometry</run_depend>
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>message_filters</run_depend>
+  <run_depend>depth_image_proc</run_depend>
   <run_depend>geometry_msgs</run_depend>
   <run_depend>pcl_ros</run_depend>
   <run_depend>roscpp</run_depend>

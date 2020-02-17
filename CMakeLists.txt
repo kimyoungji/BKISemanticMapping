@@ -29,7 +29,15 @@ find_package(catkin REQUIRED COMPONENTS
         nav_msgs
         pcl_ros
         roscpp
+        tf
         tf_conversions
+        std_msgs
+        sensor_msgs
+        image_transport
+        image_geometry
+        cv_bridge
+        message_filters
+        depth_image_proc
 )
 
 ## System dependencies are found with CMake's conventions
@@ -127,8 +135,13 @@ include_directories(
 #   src/${PROJECT_NAME}/bgkoctomap.cpp
 # )
 
+# Devkit source files
+set(DEVKIT_SOURCE_FILES src/dataset_devkit/TMapping.cpp)
+
 # Common source files
-set(COMMON_SOURCE_FILES src/common/point3f)
+set(COMMON_SOURCE_FILES 
+    src/common/point3f.cpp 
+    src/common/markerarray_pub.cpp)
 
 # Files for SEMANTIC BGK source
 set(MAPPING_SOURCE_FILES
@@ -156,6 +169,13 @@ add_executable(semantickitti_node
   src/semantickitti_node.cpp
 )
 
+add_executable(wavefield_node
+  ${MAPPING_SOURCE_FILES}
+  ${COMMON_SOURCE_FILES}
+  ${DEVKIT_SOURCE_FILES}
+  src/wavefield_node.cpp
+)
+
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(BGKOctoMap_node BGKOctoMap_generate_messages_cpp)
@@ -172,6 +192,11 @@ target_link_libraries(kitti_node
 )
 
 target_link_libraries(semantickitti_node
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
+)
+
+target_link_libraries(wavefield_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
 )
